@@ -12,13 +12,14 @@ class HashTable:
             summ += ord(i) * p
         return int(summ % self.size)
 
-    def seek_slot(self, value):
+    def seek_slot(self, value): # находит индекс пустого слота для значения, либо None
         if None in self.slots:
             i = self.hash_fun(value)
+            step = self.step
 
             while True:
                 try:
-                    if slots[i] is None:
+                    if self.slots[i] is None:
                         return i
                     else:
                         i += step
@@ -33,8 +34,11 @@ class HashTable:
 
         if self.slots[valueIndex] is None:
             self.slots[valueIndex] = value # записываем значение по хэш-функции
+            return valueIndex
         elif None in self.slots:
-            slots[self.seek_slot(valueIndex)] = value # возвращается индекс слота
+            idexSeekSlot = self.seek_slot(valueIndex)
+            self.slots[idexSeekSlot] = value 
+            return idexSeekSlot # возвращается индекс слота
         else:
             return None
 
