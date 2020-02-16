@@ -45,7 +45,7 @@ class HashTable:
             return None
 
     def find(self, value): # находит индекс слота со значением, или None
-        index = hash_fun(value)
+        index = self.hash_fun(value)
 
         if self.slots[index] == value:
             return self.slots[index]
