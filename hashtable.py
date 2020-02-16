@@ -35,15 +35,17 @@ class HashTable:
         if self.slots[valueIndex] is None:
             self.slots[valueIndex] = value # записываем значение по хэш-функции
             return valueIndex
+
         elif None in self.slots:
-            idexSeekSlot = self.seek_slot(valueIndex)
+            idexSeekSlot = self.seek_slot(value)
             self.slots[idexSeekSlot] = value 
             return idexSeekSlot # возвращается индекс слота
+
         else:
             return None
 
     def find(self, value): # находит индекс слота со значением, или None
         try:
-            return self.slots.index(value)
+            return self.slots(self.slots.index(value))
         except ValueError:
             return None
