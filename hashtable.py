@@ -48,6 +48,10 @@ class HashTable:
         index = self.hash_fun(value)
 
         if self.slots[index] == value:
-            return self.slots[index]
+            return index
         else:
-            return None
+            try:
+                s = self.slots.index(value)
+                return s
+            except ValueError:
+                return None
